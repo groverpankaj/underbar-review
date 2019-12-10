@@ -126,7 +126,7 @@
           iterations.push([letter, index]);
         });
 
-        expect(iterations).to.eql(FILL_ME_IN);
+        expect(iterations).to.eql([['a', 0], ['b', 1], ['c', 2]]);
       });
 
       it('should iterate over arrays and provide access to the original collection', function() {
@@ -219,7 +219,7 @@
       it('should find 40 in the list', function() {
         var numbers = [10, 20, 30, 40, 50];
 
-        expect(_.indexOf(FILL_ME_IN, 40)).to.equal(3);
+        expect(_.indexOf(numbers, 40)).to.equal(3);
       });
 
       it('should be able to compute indexOf even when the native function is undefined', function() {
@@ -229,14 +229,14 @@
       });
 
       it('returns -1 when the target cannot be found not in the list', function() {
-        var numbers = FILL_ME_IN;
+        var numbers = [12, 16, 89, 78];
 
         expect(_.indexOf(numbers, 35)).to.equal(-1);
       });
 
       it('returns the first index that the target can be found at when there are multiple matches', function() {
-        var numbers = FILL_ME_IN;
-        expect(FILL_ME_IN).to.equal(1);
+        var numbers = [12, undefined];
+        expect(_.indexOf(numbers)).to.equal(1);
       });
     });
 
@@ -251,7 +251,7 @@
 
       it('should return all odd numbers in an array', function() {
         var isOdd = function(num) { return num % 2 !== 0; };
-        var odds = FILL_ME_IN;
+        var odds = [1, 3, 5];
 
         expect(odds).to.eql([1, 3, 5]);
       });
@@ -294,7 +294,7 @@
 
       it('should not mutate the input array', function() {
         var input = [1, 2, 3, 4, 5];
-        var result = _.uniq(input);
+       var result = _.uniq(input);
 
         /*
          * Mutation of inputs should be avoided without good justification otherwise
@@ -319,34 +319,34 @@
          * that don't mutate their inputs!
          */
 
-        expect(input).to.eql([1, 2, 3, 4, 5]);
+       expect(input).to.eql([1, 2, 3, 4, 5]);
       });
 
       it('should return all unique values contained in an unsorted array', function() {
         var numbers = [1, 2, 1, 3, 1, 4];
 
-        expect(_.uniq(numbers)).to.eql([1, 2, 3, 4]);
+       expect(_.uniq(numbers)).to.eql([1, 2, 3, 4]);
       });
 
       it('should handle iterators that work with a sorted array', function() {
         var iterator = function(value) { return value === 1; };
         var numbers = [1, 2, 2, 3, 4, 4];
 
-        expect(_.uniq(FILL_ME_IN)).to.eql([1, 2]);
+        expect(_.uniq(numbers,true ,iterator)).to.eql([1, 2]);
       });
 
       it('should produce a brand new array instead of modifying the input array', function() {
         var numbers = [1, 2, 1, 3, 1, 4];
         var uniqueNumbers = _.uniq(numbers);
 
-        expect(uniqueNumbers).to.not.equal(numbers);
+       expect(uniqueNumbers).to.not.equal(numbers);
       });
 
       it('should maintain same array length', function() {
         var numbers = [1, 1, 2, 3];
         var shuffled = _.shuffle(numbers);
 
-        expect(shuffled.length).to.equal(numbers.length);
+       expect(shuffled.length).to.equal(numbers.length);
       });
     });
 
